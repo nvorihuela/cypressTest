@@ -7,8 +7,14 @@ describe('Test Nadia', () => {
       cy.visit('https://www.freerangetesters.com/')
     })
   
-    it('test 1', () => {
+    it('test ok', () => {
       cy.title().should('include','Free Range Testers')
+      cy.xpath('//*[@id="page_header"]/div/section/div/header/nav/ul/li[1]/a').click()
+      cy.contains('¿Con qué curso empiezo?').click()
+    })
+
+    it('test fail', () => {
+      cy.title().should('equal','Free Range Tes')
       cy.xpath('//*[@id="page_header"]/div/section/div/header/nav/ul/li[1]/a').click()
       cy.contains('¿Con qué curso empiezo?').click()
     })
